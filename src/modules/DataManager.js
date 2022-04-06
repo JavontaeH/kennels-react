@@ -52,3 +52,13 @@ export const deleteCustomers = (id) => {
     method: "DELETE",
   }).then((result) => result.json());
 };
+
+export const addAnimal = (newAnimal) => {
+  return fetch(`${remoteURL}/animals`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newAnimal),
+  }).then((response) => response.json());
+};

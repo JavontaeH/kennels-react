@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { deleteAnimal } from "../../modules/DataManager";
 
 export const AnimalDetail = () => {
-  const [animal, setAnimal] = useState({ name: "", breed: "" });
+  const [animal, setAnimal] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   const { animalId } = useParams();
@@ -15,10 +15,7 @@ export const AnimalDetail = () => {
     //getAnimalById(id) from AnimalManager and hang on to the data; put it into state
     console.log("useEffect", animalId);
     getAnimalById(animalId).then((animal) => {
-      setAnimal({
-        name: animal.name,
-        breed: animal.breed,
-      });
+      setAnimal(animal);
       setIsLoading(false);
     });
   }, [animalId]);
