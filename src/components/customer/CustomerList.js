@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 //import the components we will need
 import { CustomerCard } from "./CustomerCard";
 import { getAllCustomers } from "../../modules/DataManager";
+import { deleteCustomers } from "../../modules/DataManager";
 
 export const CustomerList = () => {
   // The initial state is an empty array
@@ -15,6 +16,10 @@ export const CustomerList = () => {
     });
   };
 
+  const handleDeleteCustomers = (id) => {
+    deleteCustomers(id).then(() => getAllCustomers().then(setCustomers));
+  };
+
   // got the Customers from the API on the component's first render
   useEffect(() => {
     getCustomers();
@@ -24,7 +29,11 @@ export const CustomerList = () => {
   return (
     <div className="container-cards">
       {customers.map((customer) => (
-        <CustomerCard customer={customer} key={customer.id} />
+        <CustomerCard
+          customer={customer}
+          key={customer.id}
+          handleDeleteCustomers={handleDeleteCustomers}
+        />
       ))}
     </div>
   );

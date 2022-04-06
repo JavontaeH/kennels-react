@@ -22,3 +22,27 @@ export const getAllEmployees = () => {
 export const getAllLocations = () => {
   return fetch(`${remoteURL}/Locations`).then((res) => res.json());
 };
+
+export const deleteAnimal = (id) => {
+  return fetch(`${remoteURL}/animals/${id}`, {
+    method: "DELETE",
+  }).then((result) => result.json());
+};
+
+export const deleteLocations = (id) => {
+  return fetch(`${remoteURL}/locations/${id}`, {
+    method: "DELETE",
+  }).then((result) => result.json());
+};
+
+export const deleteEmployees = (id) => {
+  return fetch(`${remoteURL}/employees/${id}`, {
+    method: "DELETE",
+  }).then((result) => result.json());
+};
+
+export const deleteCustomers = (id) => {
+  return fetch(`${remoteURL}/customers/${id}`, {
+    method: "DELETE",
+  }).then((result) => result.json());
+};
