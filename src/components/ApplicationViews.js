@@ -30,7 +30,7 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
           element={<Login setAuthUser={setAuthUser} />}
         />
         <Route exact path="/register" element={<Register />} />
-        {/* Render the home page */}
+        {/* Render the home page if logged in else nav to login */}
         <Route path="/" element={<PrivateOutlet />}>
           <Route exact path="" element={<Home />} />
 
