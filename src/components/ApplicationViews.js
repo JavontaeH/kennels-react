@@ -10,6 +10,7 @@ import { LocationDetail } from "./location/LocationDetail";
 import { AnimalForm } from "./animal/AnimalForm";
 import { Register } from "./auth/Register";
 import { Login } from "./auth/Login";
+import { AnimalEditForm } from "./animal/AnimalEditForm";
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
   const PrivateRoute = () => {
@@ -35,7 +36,8 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
         {/* Render the home page if logged in else nav to login */}
         <Route path="/" element={<PrivateRoute />}>
           <Route exact path="animals" element={<AnimalList />} />
-          <Route path="animals/:animalId" element={<AnimalDetail />} />
+          <Route exact path="animals/:animalId" element={<AnimalDetail />} />
+          <Route path="/animals/:animalId/edit" element={<AnimalEditForm />} />
           <Route path="animals/create" element={<AnimalForm />} />
           <Route path="locations/:locationId" element={<LocationDetail />} />
           <Route path="customers" element={<CustomerList />} />
