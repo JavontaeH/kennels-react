@@ -25,6 +25,7 @@ export const Kennel = () => {
       <ApplicationViews
         setAuthUser={setAuthUser}
         isAuthenticated={isAuthenticated}
+        setIsAuthenticated={setIsAuthenticated}
       />
     </>
   );

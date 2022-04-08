@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./NavBar.css";
 
 export const NavBar = ({ clearUser, isAuthenticated }) => {
@@ -42,7 +42,7 @@ export const NavBar = ({ clearUser, isAuthenticated }) => {
       )}
       {isAuthenticated && (
         <li className="navbar__item">
-          <Link className="navbar__link" to="/customers">
+          <Link className="navbar__link" to="/owners">
             {" "}
             Owners{" "}
           </Link>
