@@ -12,7 +12,7 @@ import { Register } from "./auth/Register";
 import { Login } from "./auth/Login";
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
-  const PrivateOutlet = () => {
+  const PrivateRoute = () => {
     return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
   };
 
@@ -26,21 +26,17 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
         {/* render login paths */}
         <Route
           exact
-          path="/login"
+          path="login"
           element={<Login setAuthUser={setAuthUser} />}
         />
-        <Route exact path="/register" element={<Register />} />
+        <Route exact path="register" element={<Register />} />
+        <Route exact path="" element={<Home />} />
+        <Route exact path="locations" element={<LocationList />} />
         {/* Render the home page if logged in else nav to login */}
-        <Route path="/" element={<PrivateOutlet />}>
-          <Route exact path="" element={<Home />} />
-
-          {/* Render the list when http://localhost:3000/(list) is chosen */}
-
+        <Route path="/" element={<PrivateRoute />}>
           <Route exact path="animals" element={<AnimalList />} />
           <Route path="animals/:animalId" element={<AnimalDetail />} />
           <Route path="animals/create" element={<AnimalForm />} />
-
-          <Route exact path="locations" element={<LocationList />} />
           <Route path="locations/:locationId" element={<LocationDetail />} />
           <Route path="customers" element={<CustomerList />} />
           <Route path="employees" element={<EmployeeList />} />
